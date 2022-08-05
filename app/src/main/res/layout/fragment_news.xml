@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
+    android:paddingHorizontal="30dp"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/news_cover_image"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/news_title_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/news_cover_image"
+        tools:text="Product Title" />
+
+    <TextView
+        android:id="@+id/news_description_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/news_title_text"
+        tools:text="Product Description" />
+
+    <TextView
+        android:id="@+id/news_publish_date_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:textSize="12sp"
+        tools:text="2021-10-04 12:11:00"
+        app:layout_constraintTop_toBottomOf="@id/news_description_text" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
