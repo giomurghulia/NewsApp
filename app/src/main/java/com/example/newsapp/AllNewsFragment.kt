@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -30,6 +32,7 @@ class AllNewsFragment : Fragment() {
 
         binding = FragmentAllNewsBinding.inflate(inflater, container, false)
         return binding.root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -41,8 +44,20 @@ class AllNewsFragment : Fragment() {
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.news.collect {
-                    myAdapter.submitList(it)
+                viewModel.newsState.collect {
+                    binding.loaderProgressBar.visibility = View.GONE
+                    when (it) {
+                        is Resource.Success -> {
+                            myAdapter.submitList(it.items)
+                            Toast.makeText(context, "Success Add Items", Toast.LENGTH_SHORT).show()
+                        }
+                        is Resource.Error -> {
+                            Toast.makeText(context, it.errorMessage, Toast.LENGTH_SHORT).show()
+                        }
+                        is Resource.Loading -> {
+                            binding.loaderProgressBar.visibility = View.VISIBLE
+                        }
+                    }
                 }
             }
         }

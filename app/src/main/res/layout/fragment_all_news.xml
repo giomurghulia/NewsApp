@@ -5,17 +5,23 @@
     android:layout_height="match_parent"
     android:paddingHorizontal="20dp">
 
-
     <TextView
         android:id="@+id/title_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:gravity="center"
+        android:text="Hello Domus News"
         android:textColor="@color/black"
         android:textSize="20sp"
-        android:text="Hello Domus News"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/loader_progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/title_text"
+        android:visibility="gone"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/main_recycleView"
